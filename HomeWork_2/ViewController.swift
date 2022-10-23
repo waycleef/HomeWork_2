@@ -14,16 +14,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenLight: UIView!
     @IBOutlet weak var startButton: UIButton!
     
+    override func viewWillLayoutSubviews() {
+        
+        let radius = redLight.frame.width / 2
+        
+        redLight.layer.cornerRadius = radius
+        orangeLight.layer.cornerRadius = radius
+        greenLight.layer.cornerRadius = radius
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redLight.layer.cornerRadius = 100
         redLight.alpha = 0.3
-        
-        orangeLight.layer.cornerRadius = 100
         orangeLight.alpha = 0.3
-        
-        greenLight.layer.cornerRadius = 100
         greenLight.alpha = 0.3
         
         startButton.layer.cornerRadius = 10
