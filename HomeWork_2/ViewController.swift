@@ -8,30 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    enum TrafficLightsColors {
+        case red, yellow, green
+    }
 
     @IBOutlet weak var redLight: UIView!
     @IBOutlet weak var orangeLight: UIView!
     @IBOutlet weak var greenLight: UIView!
     @IBOutlet weak var startButton: UIButton!
     
-    enum TrafficLightsColors {
-        case red, yellow, green
-    }
+
     
     private var trafficLightscolors = TrafficLightsColors.red
     private let lightOn: CGFloat = 1
     private let lightOff: CGFloat = 0.3
-    
-    override func viewWillLayoutSubviews() {
-        
-        let radius = redLight.frame.width / 2
-        
-        redLight.layer.cornerRadius = radius
-        orangeLight.layer.cornerRadius = radius
-        greenLight.layer.cornerRadius = radius
-        
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +35,22 @@ class ViewController: UIViewController {
         
     }
 
-
+    override func viewWillLayoutSubviews() {
+        
+        let radius = redLight.frame.width / 2
+        
+        redLight.layer.cornerRadius = radius
+        orangeLight.layer.cornerRadius = radius
+        greenLight.layer.cornerRadius = radius
+        
+        
+    }
+    
     @IBAction func startButtonTapped() {
-        startButton.setTitle("Next", for: .normal)
+        if startButton.currentTitle == "Start" {
+            startButton.setTitle("Next", for: .normal)
+        }
+        
 
         switch trafficLightscolors {
         case .red:
